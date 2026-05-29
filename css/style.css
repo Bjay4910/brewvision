@@ -241,7 +241,7 @@
         .experience-section {
             position: relative;
             width: 100%;
-            min-height: 100vh;
+            min-height: auto;
             background-color: #050a14;
             padding: 6rem 4rem;
             display: flex;
@@ -559,9 +559,9 @@
 
         /* ─── SECTION 3.5: ORBITAL PROCESS ───────────────────────── */
         .orbital-section {
-            min-height: 100vh;
+            min-height: auto;
             background: #050a14;
-            padding: 6rem 0;
+            padding: 6rem 0 4rem 0;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -598,7 +598,7 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            height: 600px;
+            height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -746,7 +746,7 @@
         /* ─── SECTION 3: TESTIMONIALS ────────────────────────────── */
         .section-three {
             background: #050a14;
-            padding: 8rem 0 10rem 0;
+            padding: 8rem 0 5rem 0;
             position: relative;
             overflow: hidden;
         }
@@ -775,7 +775,7 @@
 
         .section-three-header {
             max-width: 1400px;
-            margin: 0 auto 5rem auto;
+            margin: 0 auto 3rem auto;
             padding: 0 4rem;
             position: relative;
             z-index: 1;
@@ -936,7 +936,7 @@
 
         /* ─── SECTION 4: FINAL CTA ───────────────────────────────── */
         .section-four {
-            min-height: 90vh;
+            min-height: 70vh;
             background: #050a14;
             position: relative;
             overflow: hidden;
@@ -944,7 +944,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem 9rem 2rem;
         }
 
         .cta-bg-image {
@@ -1205,46 +1205,7 @@
         }
 
         @media (max-width: 768px) {
-            .orbital-ring {
-                width: 280px;
-                height: 280px;
-            }
-            .orbital-node {
-                width: 32px;
-                height: 32px;
-                margin-top: -16px;
-                margin-left: -16px;
-                font-size: 0.85rem;
-            }
-            .orbital-node-label {
-                display: none;
-            }
-            .orbital-card {
-                max-width: 90%;
-                bottom: 20px;
-            }
-            .orbital-container {
-                height: 450px;
-            }
-            .site-footer {
-                padding: 3rem 1.5rem 2rem 1.5rem;
-            }
-            .footer-top {
-                flex-direction: column;
-                gap: 2.5rem;
-            }
-            .footer-right {
-                align-items: flex-start;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
-            }
-            .section-four {
-                min-height: 70vh;
-                padding: 4rem 1.5rem;
-            }
+            /* HERO */
             .site-header {
                 padding: 1.5rem;
             }
@@ -1262,17 +1223,23 @@
             }
             .text-container {
                 left: 1.5rem;
+                right: 1.5rem;
                 bottom: 5rem;
             }
+            .eyebrow {
+                font-size: 0.8rem;
+            }
             .headline {
-                font-size: clamp(2.5rem, 10vw, 3.5rem);
+                font-size: clamp(2rem, 8vw, 3.5rem);
+                line-height: 1.1;
             }
 
+            /* SECTION 2: EXPERIENCE */
             .experience-section {
-                padding: 4rem 2rem;
+                padding: 3rem 1.5rem;
             }
             .exp-headline {
-                font-size: 32px;
+                font-size: clamp(1.8rem, 6vw, 32px);
             }
             .exp-tabs {
                 gap: 0.5rem;
@@ -1285,23 +1252,156 @@
             }
             .exp-tab {
                 white-space: nowrap;
+                min-height: 44px; /* Touch target */
             }
             .exp-content-area {
-                padding: 2rem;
-                margin-top: 2rem;
+                padding: 1.5rem;
+                margin-top: 1.5rem;
             }
             .exp-pane {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 1.5rem;
                 position: absolute;
-                top: 2rem;
-                left: 2rem;
-                right: 2rem;
+                top: 1.5rem;
+                left: 1.5rem;
+                right: 1.5rem;
             }
             .exp-pane-title {
-                font-size: 28px;
+                font-size: 24px;
+            }
+            .exp-pane-desc {
+                font-size: 14px;
             }
             .exp-image {
-                min-height: 250px;
+                min-height: 200px;
+            }
+
+            /* SECTION 3.5: ORBITAL PROCESS */
+            .orbital-section {
+                padding: 2rem 1.5rem;
+                min-height: auto;
+            }
+            .orbital-headline {
+                font-size: clamp(1.8rem, 6vw, 32px);
+            }
+            .orbital-ring {
+                width: 280px;
+                height: 280px;
+            }
+            .orbital-node {
+                width: 44px; /* Touch target */
+                height: 44px;
+                margin-top: -22px;
+                margin-left: -22px;
+                font-size: 0.9rem;
+            }
+            .orbital-node-label {
+                display: none;
+            }
+            .orbital-card {
+                max-width: 90%;
+                bottom: 30px;
+                padding: 1.5rem;
+            }
+            .orbital-container {
+                height: 400px;
+            }
+
+            /* SECTION 3: TESTIMONIALS */
+            .section-three {
+                padding: 3rem 0; /* marquee handles its own edges */
+            }
+            .section-three-header {
+                padding: 0 1.5rem;
+                margin-bottom: 2rem;
+            }
+            .section-three-headline {
+                font-size: clamp(1.8rem, 6vw, 32px);
+            }
+            .testimonial-card {
+                width: 280px;
+                padding: 1.5rem;
+                flex-shrink: 0;
+            }
+            .testimonial-quote {
+                font-size: 0.95rem;
+            }
+            .marquee-wrapper::before,
+            .marquee-wrapper::after {
+                width: 80px;
+            }
+
+            /* SECTION 4: FINAL CTA */
+            .section-four {
+                min-height: auto;
+                padding: 3rem 1.5rem 4rem 1.5rem;
+            }
+            .section-four-headline {
+                font-size: clamp(2rem, 8vw, 4rem);
+                line-height: 1.1;
+            }
+            .cta-button {
+                width: 100%;
+                min-height: 48px;
+                justify-content: center;
+                padding: 0 1rem;
+            }
+
+            /* FOOTER */
+            .site-footer {
+                padding: 3rem 1.5rem 2rem 1.5rem;
+            }
+            .footer-top {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+            .footer-right {
+                align-items: flex-start;
+                gap: 2.5rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .dock {
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+                padding-top: 1rem;
+                justify-content: flex-start;
+            }
+            .dock-item {
+                width: 44px;
+                height: 44px;
+                transform: scale(1) !important;
+            }
+            .dock-item svg {
+                width: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .headline {
+                font-size: clamp(1.8rem, 10vw, 2.5rem);
+            }
+            .orbital-ring {
+                width: 240px;
+                height: 240px;
+            }
+            .orbital-container {
+                height: 400px;
+            }
+            .testimonial-card {
+                width: 280px;
+            }
+            .cta-button {
+                font-size: 0.9rem;
+            }
+            .section-four-headline {
+                font-size: 2.5rem;
             }
         }
