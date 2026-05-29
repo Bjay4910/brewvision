@@ -2,7 +2,7 @@
 
 A premium, cinematic landing page for a fictional craft beer brand — built to showcase what's possible when you treat the modern web like a stage rather than a document.
 
-**Live demo:** [coming soon — Vercel deploy]
+**Live demo:** [brewvision.vercel.app](https://brewvision.vercel.app)
 
 ![BrewVision Hero](assets/beer-glass.jpg)
 
