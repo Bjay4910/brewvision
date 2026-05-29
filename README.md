@@ -50,9 +50,11 @@ The whole site uses a deep navy (`#050a14`) and a warm gold (`#C9A84C`) as its o
 
 Animations stay in the 300–800ms range. Anything longer feels sluggish; anything shorter feels jittery.
 
-## Credits
+## Process
 
-Built with [Antigravity IDE](https://antigravity.google.com) (Gemini) and [Claude](https://claude.ai). Imagery generated with Nano Banana Pro. Hero video generated with Kling 3.0. UI inspiration from 21st.dev and Aceternity components, adapted to vanilla JS.
+Built using a modern AI-assisted workflow — the kind of approach that lets a small studio like Orductive deliver premium, custom sites in days instead of months. Every design decision, debug loop, and polish detail was directed by hand; the AI is a collaborator, not the author.
+
+UI inspiration drawn from the broader creative web community.
 
 ## License
 
