@@ -239,3 +239,105 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })();
 
+(function() {
+    function initOrbital() {
+        const stages = [
+            { num: 1, name: "Harvest", desc: "Hand-picked hops from Bavarian fields. The foundation of every great brew." },
+            { num: 2, name: "Malt", desc: "Barley roasted slowly to coax out caramel and toast notes." },
+            { num: 3, name: "Mash", desc: "Grain meets water at precise temperatures. Sugars awaken." },
+            { num: 4, name: "Boil", desc: "Hops join the wort. Bitterness, aroma, character emerge." },
+            { num: 5, name: "Ferment", desc: "Yeast transforms sugar into spirit. Patience over weeks." },
+            { num: 6, name: "Age", desc: "Months of cold conditioning. Flavors deepen and harmonize." },
+            { num: 7, name: "Bottle", desc: "Sealed at peak character. Ready for the moment of pour." }
+        ];
+
+        const container = document.getElementById('orbitalNodes');
+        if (!container) return;
+
+        const card = document.getElementById('orbitalCard');
+        const cardNum = document.getElementById('cardNum');
+        const cardTitle = document.getElementById('cardTitle');
+        const cardDesc = document.getElementById('cardDesc');
+
+        let rotation = -90;
+        let pauseRotation = false;
+        let activeNodeIndex = -1;
+
+        const nodeEls = stages.map((stage, i) => {
+            const el = document.createElement('div');
+            el.className = 'orbital-node';
+            el.innerHTML = `
+                ${stage.num}
+                <span class="orbital-node-label">${stage.name}</span>
+            `;
+            
+            el.addEventListener('mouseenter', () => pauseRotation = true);
+            el.addEventListener('mouseleave', () => {
+                if (activeNodeIndex === -1) pauseRotation = false;
+            });
+            
+            el.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (activeNodeIndex === i) {
+                    el.classList.remove('active');
+                    card.classList.remove('show');
+                    activeNodeIndex = -1;
+                    pauseRotation = false;
+                } else {
+                    nodeEls.forEach(n => n.classList.remove('active'));
+                    el.classList.add('active');
+                    cardNum.textContent = `0${stage.num}`;
+                    cardTitle.textContent = stage.name;
+                    cardDesc.textContent = stage.desc;
+                    card.classList.add('show');
+                    activeNodeIndex = i;
+                    pauseRotation = true;
+                }
+            });
+            
+            container.appendChild(el);
+            return el;
+        });
+
+        document.addEventListener('click', () => {
+            if (activeNodeIndex !== -1) {
+                nodeEls.forEach(n => n.classList.remove('active'));
+                card.classList.remove('show');
+                activeNodeIndex = -1;
+                pauseRotation = false;
+            }
+        });
+
+        card.addEventListener('click', (e) => e.stopPropagation());
+
+        function updatePositions() {
+            const isMobile = window.innerWidth <= 768;
+            const radius = isMobile ? 140 : 220;
+
+            nodeEls.forEach((el, index) => {
+                const angle = ((index / stages.length) * 360 + rotation) % 360;
+                const radian = angle * Math.PI / 180;
+                const x = Math.cos(radian) * radius;
+                const y = Math.sin(radian) * radius;
+                el.style.setProperty('--x', `${x}px`);
+                el.style.setProperty('--y', `${y}px`);
+            });
+        }
+
+        setInterval(() => {
+            if (!pauseRotation) {
+                rotation += 0.3;
+                updatePositions();
+            }
+        }, 50);
+        
+        window.addEventListener('resize', updatePositions);
+        updatePositions();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initOrbital);
+    } else {
+        initOrbital();
+    }
+})();

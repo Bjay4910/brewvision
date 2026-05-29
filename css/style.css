@@ -20,8 +20,7 @@
             background-color: #050a14;
             color: #ffffff;
             overflow-x: hidden;
-            display: grid;
-            grid-template-rows: 100vh auto auto auto auto;
+            grid-template-rows: 100vh auto auto auto auto auto;
         }
 
         /* ─── ROW 1: HERO AREA ───────────────────────────────────── */
@@ -558,6 +557,192 @@
             transform: scale(1.08);
         }
 
+        /* ─── SECTION 3.5: ORBITAL PROCESS ───────────────────────── */
+        .orbital-section {
+            min-height: 100vh;
+            background: #050a14;
+            padding: 6rem 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .orbital-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .orbital-eyebrow {
+            display: block;
+            color: #C9A84C;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .orbital-headline {
+            font-family: 'Satoshi', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #fff;
+        }
+
+        .orbital-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orbital-core {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #F0C96B 0%, #C9A84C 100%);
+            box-shadow: 0 0 30px rgba(201,168,76,0.6), 0 0 60px rgba(201,168,76,0.2);
+            z-index: 1;
+            animation: corePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes corePulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .orbital-ring {
+            position: absolute;
+            width: 440px;
+            height: 440px;
+            border-radius: 50%;
+            border: 1px solid rgba(201,168,76,0.15);
+            z-index: 0;
+        }
+
+        .orbital-nodes {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .orbital-node {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+            margin-left: -20px;
+            border-radius: 50%;
+            background: #050a14;
+            border: 2px solid rgba(201,168,76,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #C9A84C;
+            font-weight: 700;
+            cursor: pointer;
+            pointer-events: auto;
+            transform: translate(var(--x, 0), var(--y, 0)) scale(1);
+            transition: transform 300ms ease, border-color 300ms ease, background 300ms ease, color 300ms ease;
+            z-index: 2;
+        }
+
+        .orbital-node-label {
+            position: absolute;
+            top: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            white-space: nowrap;
+            transition: opacity 300ms ease, color 300ms ease;
+            pointer-events: none;
+        }
+
+        .orbital-node:hover {
+            border-color: #F0C96B;
+            transform: translate(var(--x, 0), var(--y, 0)) scale(1.15);
+        }
+
+        .orbital-node:hover .orbital-node-label {
+            opacity: 1;
+            color: #F0C96B;
+        }
+
+        .orbital-node.active {
+            background: #C9A84C;
+            color: #050a14;
+            border-color: #F0C96B;
+            transform: translate(var(--x, 0), var(--y, 0)) scale(1.5);
+        }
+
+        .orbital-node.active .orbital-node-label {
+            opacity: 1;
+            color: #F0C96B;
+        }
+
+        /* Detail Card */
+        .orbital-card {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 400ms ease, transform 400ms ease, visibility 400ms ease;
+            z-index: 10;
+        }
+
+        .orbital-card.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .card-num {
+            color: #C9A84C;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            color: #fff;
+            font-family: 'Satoshi', sans-serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-desc {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         /* ─── SECTION 3: TESTIMONIALS ────────────────────────────── */
         .section-three {
             background: #050a14;
@@ -1020,6 +1205,27 @@
         }
 
         @media (max-width: 768px) {
+            .orbital-ring {
+                width: 280px;
+                height: 280px;
+            }
+            .orbital-node {
+                width: 32px;
+                height: 32px;
+                margin-top: -16px;
+                margin-left: -16px;
+                font-size: 0.85rem;
+            }
+            .orbital-node-label {
+                display: none;
+            }
+            .orbital-card {
+                max-width: 90%;
+                bottom: 20px;
+            }
+            .orbital-container {
+                height: 450px;
+            }
             .site-footer {
                 padding: 3rem 1.5rem 2rem 1.5rem;
             }
